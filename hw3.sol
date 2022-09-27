@@ -47,7 +47,7 @@ contract hw3 {
     function setContacts(address[] calldata contacts) external {
         addressToContacts[msg.sender] = contacts;
     }
-
+    // extra credit
     mapping(address => mapping (address => string)) public addressToNickname;
 
     function getNickname(address caller, address contact) external view returns (string memory) {
