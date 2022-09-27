@@ -7,6 +7,7 @@ contract hw3 {
     function doMath(int256 numberOne, int256 numberTwo) external pure returns (int256) {
         return numberOne * numberTwo;
     }
+    // cannot figure out for the life of me what is wrong with this function
     function hashStringArray(string[] memory words) external pure returns (bytes32[] memory) {
         uint counter = 0;
         bytes32[] memory bytesArray = new bytes32[](words.length);
@@ -32,18 +33,15 @@ contract hw3 {
         }
         return total;
     }
-
+    // contact book
     mapping(address => address[]) public addressToContacts;
     
-    // Returns a list of contacts for a given address
     function getContacts(address caller) external view returns (address[] memory) {
         return addressToContacts[caller];
     }
-    // Adds an address to the caller's list of contacts
     function addContact(address contact) external {
         addressToContacts[msg.sender].push(contact);
     }
-    // Replaces the caller's existing list of contacts with the input parameter
     function setContacts(address[] calldata contacts) external {
         addressToContacts[msg.sender] = contacts;
     }
