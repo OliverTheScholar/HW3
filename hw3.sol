@@ -14,21 +14,6 @@ contract hw3 {
         }
         return bytesArray;
     }
-    // testing to make sure the hashing/array construction works -- now just need to figure out the loop
-    function testHashing(string[] memory words) external pure returns (bytes32[] memory) {
-        bytes32[] memory newArray = new bytes32[](words.length);
-        newArray[0] = keccak256(abi.encode(words[0]));
-        newArray[1] = keccak256(abi.encode(words[1]));
-        return newArray;
-    }
-    // this also works, wtf
-    function testLooping(string[] memory array) external pure returns (uint) {
-        uint total = 0;
-        for (uint i = 0; i <= array.length; i++) {
-            total += i;
-        }
-        return total;
-    }
 
     // contact book
     mapping(address => address[]) public addressToContacts;
@@ -42,7 +27,7 @@ contract hw3 {
     function setContacts(address[] calldata contacts) external {
         addressToContacts[msg.sender] = contacts;
     }
-    
+
     // extra credit
     mapping(address => mapping (address => string)) public addressToNickname;
 
