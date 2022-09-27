@@ -3,21 +3,17 @@ pragma solidity >= 0.8.0;
 
 contract hw3 {
 
-
     function doMath(int256 numberOne, int256 numberTwo) external pure returns (int256) {
         return numberOne * numberTwo;
     }
-    // cannot figure out for the life of me what is wrong with this function
+    // finally, it works. thanks Jack.
     function hashStringArray(string[] memory words) external pure returns (bytes32[] memory) {
-        uint counter = 0;
         bytes32[] memory bytesArray = new bytes32[](words.length);
-        for (uint i = 0; i <= words.length; i++) {
-            bytesArray[counter] = keccak256(abi.encode(words[i]));
-            counter++;
+        for (uint i = 0; i < words.length; i++) {
+            bytesArray[i] = keccak256(abi.encode(words[i]));
         }
         return bytesArray;
     }
-    
     // testing to make sure the hashing/array construction works -- now just need to figure out the loop
     function testHashing(string[] memory words) external pure returns (bytes32[] memory) {
         bytes32[] memory newArray = new bytes32[](words.length);
@@ -33,6 +29,7 @@ contract hw3 {
         }
         return total;
     }
+
     // contact book
     mapping(address => address[]) public addressToContacts;
     
@@ -45,6 +42,7 @@ contract hw3 {
     function setContacts(address[] calldata contacts) external {
         addressToContacts[msg.sender] = contacts;
     }
+    
     // extra credit
     mapping(address => mapping (address => string)) public addressToNickname;
 
