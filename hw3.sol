@@ -1,11 +1,22 @@
 // SPDX-License-Identifier: UNLICENSED 
 pragma solidity >= 0.8.0;
 
-contract hw3 {
+contract HW3 {
 
     function doMath(int256 numberOne, int256 numberTwo) external pure returns (int256) {
         return numberOne * numberTwo;
     }
+
+    function getMax(uint[] calldata array) external pure returns (uint256) {
+        uint256 largest = 0;
+        for (uint256 i = 0; i < array.length; i++) {
+            if (array[i] > largest) {
+                largest = array[i];
+            }
+        }
+        return largest;
+    }
+
     // finally, it works. thanks Jack.
     function hashStringArray(string[] memory words) external pure returns (bytes32[] memory) {
         bytes32[] memory bytesArray = new bytes32[](words.length);
